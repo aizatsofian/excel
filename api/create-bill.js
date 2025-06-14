@@ -26,7 +26,7 @@ export default async function handler(request, response) {
         const toyyibpayData = new URLSearchParams({
             'userSecretKey': userSecretKey,
             'categoryCode': categoryCode,
-            'billName': 'Pesanan dari Laman Web Dr Aizat',
+            'billName': 'Pesanan Laman Web Dr Aizat',
             'billDescription': billDescription,
             'billPriceSetting': 1,
             'billPayorInfo': 1,
