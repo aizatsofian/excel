@@ -3,24 +3,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // =================================================================================
-    // BAHAGIAN 1: DATA DAN FUNGSI SOKONGAN
+    // BAHAGIAN 1: FUNGSI SOKONGAN UNTUK TROLIDAN KOMPONEN
     // =================================================================================
-
-    /**
-     * ! PENTING UNTUK TUJUAN PENGUJIAN (TESTING) !
-     * Untuk melihat halaman troli berfungsi tanpa perlu menambah item dari halaman utama,
-     * anda boleh buang komen (uncomment) pada blok kod di bawah buat sementara waktu.
-     * Ia akan mencipta data troli palsu (dummy data).
-     * Jangan lupa komen semula selepas selesai menguji.
-     */
-    /*
-    const dummyCartData = [
-        { id: 10, name: 'Excel HRMIS', price: 2.00, image: 'img/produk-hrmis.png', quantity: 1 },
-        { id: 3, name: 'Excel Pivot Table', price: 2.00, image: 'img/produk-pivot-table.png', quantity: 2 }
-    ];
-    localStorage.setItem('cart', JSON.stringify(dummyCartData));
-    */
-    
 
     // Fungsi untuk mendapatkan item troli dari localStorage
     const getCartItems = () => {
@@ -28,32 +12,54 @@ document.addEventListener('DOMContentLoaded', () => {
         return cart ? JSON.parse(cart) : []; // Jika troli tiada, pulangkan array kosong
     };
 
-    // Fungsi untuk menyimpan item troli ke localStorage
+    // Fungsi untuk menyimpan item troli ke localStorage dan kemas kini kaunter
     const saveCartItems = (cart) => {
         localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCounter(); // Kemas kini kaunter setiap kali troli disimpan
+    };
+    
+    // Fungsi untuk memuatkan komponen luaran seperti header dan footer
+    const loadComponent = async (filePath, elementId) => {
+        try {
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+            const html = await response.text();
+            document.getElementById(elementId).innerHTML = html;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    
+    // Fungsi untuk mengemas kini nombor pada ikon troli
+    const updateCartCounter = () => {
+        const cart = getCartItems();
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const counterElement = document.querySelector('.cart-counter');
+        if (counterElement) {
+            counterElement.textContent = totalItems;
+            counterElement.style.display = totalItems > 0 ? 'inline-flex' : 'none';
+        }
     };
 
+
     // =================================================================================
-    // BAHAGIAN 2: MEMAPARKAN KANDUNGAN (RENDER)
+    // BAHAGIAN 2: MEMAPARKAN KANDUNGAN TROLIS (RENDER)
     // =================================================================================
 
     const cartTableBody = document.getElementById('cart-items-body');
     const cartTotalPriceEl = document.getElementById('cart-total-price');
 
-    // Fungsi utama untuk memaparkan semua item troli di dalam jadual
     const renderCart = () => {
         const cart = getCartItems();
-        cartTableBody.innerHTML = ''; // Kosongkan jadual sebelum memaparkan data baru
+        cartTableBody.innerHTML = ''; 
 
         if (cart.length === 0) {
-            // Jika troli kosong, paparkan mesej
             cartTableBody.innerHTML = `
                 <tr class="cart-empty-row">
                     <td colspan="6">Your cart is currently empty.</td>
                 </tr>
             `;
         } else {
-            // Jika ada item, jana baris jadual untuk setiap item
             cart.forEach((item, index) => {
                 const itemTotalPrice = item.price * item.quantity;
                 const row = `
@@ -85,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartTotal();
     };
 
-    // Fungsi untuk mengira dan mengemas kini jumlah harga keseluruhan
     const updateCartTotal = () => {
         const cart = getCartItems();
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -96,58 +101,100 @@ document.addEventListener('DOMContentLoaded', () => {
     // BAHAGIAN 3: PENGURUSAN INTERAKSI (EVENT LISTENERS)
     // =================================================================================
     
-    // Menggunakan 'Event Delegation' untuk mengurus semua klik di dalam jadual
+    // Urus klik untuk kuantiti dan padam
     cartTableBody.addEventListener('click', (event) => {
         const target = event.target;
         const productID = parseInt(target.getAttribute('data-id'));
         let cart = getCartItems();
 
-        // Logik untuk butang TAMBAH kuantiti (+)
         if (target.classList.contains('increase-btn')) {
             const item = cart.find(i => i.id === productID);
-            if (item) {
-                item.quantity++;
-            }
+            if (item) item.quantity++;
         }
 
-        // Logik untuk butang KURANG kuantiti (-)
         if (target.classList.contains('decrease-btn')) {
             const item = cart.find(i => i.id === productID);
-            if (item && item.quantity > 1) {
-                item.quantity--;
-            }
+            if (item && item.quantity > 1) item.quantity--;
         }
 
-        // Logik untuk butang DELETE
         if (target.classList.contains('delete-btn')) {
-            event.preventDefault(); // Elak pautan dari melompat ke atas halaman
-            if (confirm(`Are you sure you want to remove "${target.closest('tr').querySelector('.cart-item-title').textContent}"?`)) {
+            event.preventDefault();
+            const itemName = target.closest('tr').querySelector('.cart-item-title').textContent;
+            if (confirm(`Are you sure you want to remove "${itemName}"?`)) {
                  cart = cart.filter(item => item.id !== productID);
             }
         }
         
-        // Simpan perubahan dan paparkan semula troli
         saveCartItems(cart);
         renderCart();
     });
 
+    // Urus penghantaran borang "Check Out"
+    const deliveryForm = document.getElementById('delivery-form');
+    deliveryForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); 
+        const checkoutButton = document.querySelector('.btn-checkout');
+        checkoutButton.disabled = true;
+        checkoutButton.textContent = 'Memproses...';
+
+        const customerData = {
+            name: document.getElementById('full-name').value,
+            phone: document.getElementById('phone-number').value,
+            email: document.getElementById('email').value,
+            address: document.getElementById('full-address').value
+        };
+        
+        if (!customerData.name || !customerData.phone || !customerData.email || !customerData.address) {
+            alert('Sila lengkapkan semua butiran penghantaran.');
+            checkoutButton.disabled = false;
+            checkoutButton.textContent = 'Check Out';
+            return;
+        }
+
+        const cart = getCartItems();
+        const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        if (cart.length === 0) {
+            alert('Troli anda kosong. Sila tambah produk terlebih dahulu.');
+            checkoutButton.disabled = false;
+            checkoutButton.textContent = 'Check Out';
+            return;
+        }
+
+        try {
+            // Hantar semua data ke Vercel Serverless Function
+            const response = await fetch('/api/create-bill', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    customer: customerData,
+                    items: cart,
+                    total: totalAmount
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success && result.billCode) {
+                // Jika berjaya, halakan pengguna ke halaman pembayaran ToyyibPay
+                window.location.href = `https://toyyibpay.com/${result.billCode}`;
+            } else {
+                alert('Ralat: ' + (result.message || 'Gagal mencipta bil pembayaran.'));
+                checkoutButton.disabled = false;
+                checkoutButton.textContent = 'Check Out';
+            }
+        } catch (error) {
+            console.error('Ralat semasa menghubungi server:', error);
+            alert('Berlaku masalah teknikal. Sila cuba lagi.');
+            checkoutButton.disabled = false;
+            checkoutButton.textContent = 'Check Out';
+        }
+    });
+
     // =================================================================================
-    // BAHAGIAN 4: MEMUATKAN KOMPONEN & MEMULAKAN SKRIP
+    // BAHAGIAN 4: MEMULAKAN HALAMAN
     // =================================================================================
 
-    // Fungsi untuk memuatkan komponen luaran seperti header dan footer
-    const loadComponent = async (filePath, elementId) => {
-        try {
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-            const html = await response.text();
-            document.getElementById(elementId).innerHTML = html;
-        } catch (error) {
-            console.error(error);
-        }
-    };
-    
-    // Fungsi utama untuk memulakan semua proses
     const initializePage = async () => {
         await Promise.all([
             loadComponent('header.html', 'header-container'),
@@ -155,10 +202,9 @@ document.addEventListener('DOMContentLoaded', () => {
             loadComponent('footer.html', 'footer-container')
         ]);
         
-        // Selepas komponen dimuatkan, paparkan item dalam troli
-        renderCart();
+        renderCart(); // Paparkan item troli
+        updateCartCounter(); // Kemas kini kaunter pada permulaan
     };
 
-    // Mulakan semuanya!
     initializePage();
 });

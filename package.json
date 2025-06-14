@@ -1,0 +1,11 @@
+{
+  "name": "mudahnya-belajar-excel",
+  "version": "1.0.0",
+  "description": "Laman web untuk tutorial Excel Dr Aizat",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo \"Error: no start script specified\" && exit 1"
+  },
+  "author": "Dr Aizat",
+  "license": "ISC"
+}
