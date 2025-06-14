@@ -128,9 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const initializePage = async () => {
         // Muatkan semua komponen luaran secara serentak
         await Promise.all([
-            loadComponent('header.html', 'header-container'),
-            loadComponent('menu.html', 'menu-container'),
-            loadComponent('footer.html', 'footer-container')
+            loadComponent('../header.html', 'header-container'),
+            loadComponent('../menu.html', 'menu-container'),
+            loadComponent('../footer.html', 'footer-container')
         ]);
         
         // Setelah komponen dimuatkan, barulah kita boleh memulakan fungsi lain
