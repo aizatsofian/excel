@@ -1,0 +1,71 @@
+/* css/base.css */
+
+/*
+ * 1. Reset Sejagat dan Box-Sizing
+ * Ini adalah amalan moden yang terbaik.
+ * Ia menetapkan semula margin dan padding pada semua elemen dan menukar
+ * cara pelayar mengira saiz kotak, menjadikannya lebih mudah dijangka.
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * 2. Gaya Asas untuk Body
+ * Menetapkan fon, saiz teks, ketinggian baris, dan warna teks/latar belakang
+ * untuk keseluruhan dokumen.
+*/
+body {
+    /* Fon "System" akan menggunakan fon lalai yang moden pada setiap OS (San Francisco pada Mac/iOS, Segoe UI pada Windows, Roboto pada Android) */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px; /* Saiz fon asas */
+    line-height: 1.6; /* Ketinggian baris untuk kebolehbacaan yang baik */
+    color: #333333; /* Warna teks kelabu gelap, lebih selesa dibaca daripada hitam pekat */
+    background-color: #f8f9fa; /* Warna latar belakang umum yang sama dengan .main-content */
+}
+
+/*
+ * 3. Gaya Tambahan
+ * Beberapa tetapan kualiti hidup tambahan.
+*/
+
+/* Menjadikan semua imej responsif secara lalai */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Membuang gaya butang lalai untuk penggayaan semula yang lebih mudah */
+button {
+    font-family: inherit; /* Memastikan butang menggunakan fon yang sama dengan body */
+}
+
+/* Keseimbangan teks pada tajuk untuk reka bentuk yang lebih kemas */
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+/* === Penetapan Lebar Halaman Utama (Boxed Layout) === */
+.site-header,
+.main-nav,
+.main-content,
+.site-footer {
+    /* Tetapkan lebar maksimum kepada 1200px */
+    max-width: 1400px;
+
+    /* Trik untuk menengahkan blok secara automatik */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === Gaya Untuk Footer === */
+.site-footer {
+    text-align: center; /* Arahan utama untuk menengahkan teks */
+    padding: 25px 0;    /* Menambah ruang di atas dan bawah teks footer */
+    color: #6c757d;     /* Pilihan: Menjadikan warna teks lebih pudar */
+    font-size: 14px;    /* Pilihan: Menjadikan fon lebih kecil */
+}

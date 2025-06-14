@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart - Mudahnya Belajar Excel</title>
+
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="cart.css"> </head>
+<body>
+
+    <div id="header-container"></div>
+    <div id="menu-container"></div>
+
+    <main class="main-content">
+        <div class="cart-page-container">
+            
+            <h1 class="cart-title">My Cart</h1>
+
+            <div class="cart-table-wrapper">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">Bil</th>
+                            <th style="width: 40%;">Item</th>
+                            <th style="width: 15%;">Unit Price</th>
+                            <th style="width: 15%;">Quantity</th>
+                            <th style="width: 15%;">Total Price</th>
+                            <th style="width: 10%;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items-body">
+                        <tr class="cart-empty-row">
+                            <td colspan="6">Your cart is currently empty.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="delivery-form-container">
+                <form id="delivery-form">
+                    <h2>Butiran Penghantaran:</h2>
+                    
+                    <div class="form-group">
+                        <label for="full-name">Nama Penuh:</label>
+                        <input type="text" id="full-name" name="full-name" placeholder="Masukkan nama penuh anda">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone-number">No. Telefon:</label>
+                        <input type="tel" id="phone-number" name="phone-number" placeholder="Contoh: 0123456789">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Digunakan untuk status pesanan">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="full-address">Alamat Penuh:</label>
+                        <textarea id="full-address" name="full-address" rows="4" placeholder="Masukkan alamat lengkap untuk penghantaran"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="checkout-summary-container">
+                <button type="button" class="btn-payment-option">Online Payment</button>
+                <div class="checkout-actions">
+                    <div class="total-price-display">
+                        Total : <span id="cart-total-price">RM 0.00</span>
+                    </div>
+                    <button type="submit" form="delivery-form" class="btn-checkout">Check Out</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="cart-logic.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+/* TAMBAH KOD INI DI BAHAGIAN ATAS product.css */
+#produk-b1-container,
+#produk-b2-container,
+#produk-b3-container {
+    display: contents;
+}
+
+/* css/product.css */
+
+/* Gaya untuk bekas kandungan utama */
+.main-content {
+    padding: 30px;
+    background-color: #f8f9fa; /* Warna latar kelabu yang sangat cerah */
+}
+
+/* Gaya untuk kotak tajuk bahagian produk */
+.product-section-title {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    margin-bottom: 30px; /* Jarak antara tajuk dan grid produk */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+/* Gaya untuk teks tajuk h2 itu sendiri */
+.product-section-title h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+/* * GRID PRODUK
+ * Ini adalah bahagian utama yang menyusun semua kad produk.
+ * Kita menggunakan CSS Grid kerana ia sangat berkuasa untuk susun atur seperti ini.
+*/
+.product-grid {
+    display: flex; /* Tukar dari grid ke flex */
+    flex-wrap: wrap; /* Benarkan item turun ke baris baru */
+    justify-content: center; /* Ini adalah kunci utama untuk menyusun item di tengah */
+    gap: 25px; /* Kekalkan jarak antara kad */
+}
+
+/*
+ * KAD PRODUK
+ * Gaya untuk setiap kad individu.
+*/
+.product-card {
+    width: calc(20% - 21px);
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    display: flex; /* Guna Flexbox untuk menyusun kandungan di dalam kad */
+    flex-direction: column; /* Susun item dari atas ke bawah */
+    overflow: hidden; /* Memastikan tiada apa-apa terkeluar dari sudut melengkung */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animasi untuk kesan hover */
+}
+
+/* Kesan apabila tetikus berada di atas kad */
+.product-card:hover {
+    transform: translateY(-5px); /* Angkat kad ke atas sedikit */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12); /* Bayang-bayang yang lebih jelas */
+}
+
+/* Gaya untuk gambar produk */
+.product-image {
+    width: 100%;
+    height: 140px; /* Tetapkan ketinggian yang konsisten untuk semua gambar */
+    object-fit: cover; /* Memastikan gambar memenuhi ruang tanpa herot */
+}
+
+/* Gaya untuk bekas maklumat (tajuk & jualan) */
+.product-info {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1; /* Memastikan bahagian ini membesar, menolak butang ke bawah */
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+    margin: 0 0 8px 0;
+}
+
+.product-sold {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 0;
+}
+
+/* Gaya untuk bekas butang */
+.product-buttons {
+    display: flex;
+    padding: 0 15px 15px 15px; /* Padding di sekeliling butang */
+    gap: 10px; /* Jarak antara dua butang */
+}
+
+/* Gaya umum untuk semua butang */
+.btn {
+    flex-grow: 1; /* Kedua-dua butang akan berkongsi ruang secara sama rata */
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 0.85; /* Kurangkan kelegapan sedikit apabila dihover */
+}
+
+/* Gaya KHAS untuk butang "Add To Cart" (Kuning) */
+.btn-add-to-cart {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Gaya KHAS untuk butang "Buy Now" (Merah) */
+.btn-buy-now {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+/*
+* RESPONSIVE DESIGN (Media Queries)
+* Ini memastikan susun atur kelihatan baik pada saiz skrin yang berbeza.
+*/
+
+/* Untuk skrin tablet besar (kurang dari 1200px) -> 4 Lajur */
+@media (max-width: 1200px) {
+    .product-card {
+        width: calc(25% - 19px); /* Pastikan ada ruang di sini */
+    }
+}
+
+/* Untuk skrin tablet (kurang dari 992px) -> 3 Lajur */
+@media (max-width: 992px) {
+    .product-card {
+        width: calc(33.33% - 17px); /* Pastikan ada ruang di sini */
+    }
+}
+
+/* Untuk skrin telefon bimbit besar (kurang dari 768px) -> 2 Lajur */
+@media (max-width: 768px) {
+    .product-card {
+        width: calc(50% - 13px); /* Pastikan ada ruang di sini */
+    }
+    .main-content {
+        padding: 20px;
+    }
+}
+
+/* Untuk skrin telefon bimbit kecil (kurang dari 576px) -> 1 Lajur */
+@media (max-width: 576px) {
+    .product-card {
+        width: 100%;
+    }
+}

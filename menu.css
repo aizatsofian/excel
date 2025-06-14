@@ -1,0 +1,71 @@
+/* css/menu.css */
+
+/* Gaya untuk bekas navigasi utama */
+.main-nav {
+    display: flex;
+    justify-content: center; /* Tukar kepada 'center' */
+    align-items: center;
+    background-color: #212529;
+    padding: 0 30px;
+    min-height: 60px;
+    position: relative; /* Tambah baris ini */
+}
+
+.nav-links {
+}
+
+.nav-links ul {
+    list-style: none; /* Membuang bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Menyusun item senarai (<li>) secara mendatar */
+}
+
+.nav-links a {
+    display: block; /* Menjadikan seluruh kawasan boleh diklik */
+    color: #f8f9fa; /* Warna putih pudar, lebih selesa dipandang */
+    text-decoration: none; /* Membuang garisan bawah pada pautan */
+    font-size: 16px;
+    font-weight: 500;
+    padding: 20px 25px; /* Ruang di dalam setiap butang menu */
+    transition: background-color 0.2s ease-in-out; /* Animasi lembut untuk kesan hover */
+}
+
+.nav-links a:hover {
+    background-color: #343a40; /* Warna latar belakang berubah sedikit */
+    color: #ffffff;
+}
+
+.nav-links a.active {
+    background-color: #000000; /* Latar belakang hitam pekat untuk menandakan ia aktif */
+    font-weight: bold;
+}
+
+.nav-cart {
+    position: absolute; /* Tetapkan kedudukan mutlak */
+    right: 30px; /* Jarak 30px dari kanan */
+    top: 50%; /* Jajarkan ke tengah secara menegak */
+    transform: translateY(-50%); /* Penjajaran menegak yang tepat */
+}
+
+.cart-button {
+    display: flex;
+    align-items: center;
+    background-color: #495057; /* Warna latar belakang yang sedikit berbeza */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 15px; /* Padding yang lebih kecil, seperti butang */
+    border-radius: 5px; /* Sudut yang sedikit melengkung */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.cart-button:hover {
+    background-color: #6c757d; /* Warna menjadi lebih cerah apabila dihover */
+}
+
+.cart-icon {
+    height: 18px; /* Menetapkan ketinggian ikon */
+    width: auto;
+    margin-right: 8px; /* Jarak antara ikon dan teks "My Cart" */
+    filter: invert(1); /* Menukar ikon hitam menjadi putih jika perlu */
+}

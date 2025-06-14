@@ -1,0 +1,228 @@
+/* css/cart.css */
+
+/* === Gaya Utama Halaman Troli === */
+.cart-page-container {
+    background: #ffffff;
+    padding: 30px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 30px; /* Jarak dengan footer */
+}
+
+.cart-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #343a40;
+}
+
+/* === Gaya Jadual Troli === */
+.cart-table-wrapper {
+    overflow-x: auto; /* Membenarkan jadual discroll secara melintang pada skrin kecil */
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse; /* Menggabungkan border untuk rupa yang kemas */
+    font-size: 16px;
+}
+
+.cart-table th, 
+.cart-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.cart-table thead th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap; /* Elak teks header terlipat */
+}
+
+.cart-table tbody td {
+    vertical-align: middle; /* Menjajarkan kandungan sel di tengah secara menegak */
+}
+
+/* Gaya untuk lajur 'Item' */
+.cart-item-info {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+/* Gaya untuk lajur 'Quantity' */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.quantity-input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-left: none;
+    border-right: none;
+    -moz-appearance: textfield; /* Sembunyikan anak panah pada Firefox */
+}
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Sembunyikan anak panah pada Chrome/Safari */
+  margin: 0;
+}
+
+
+/* Gaya untuk lajur 'Action' */
+.action-delete a {
+    color: #dc3545;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.action-delete a:hover {
+    text-decoration: underline;
+}
+
+.cart-empty-row td {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+}
+
+/* === Gaya Borang Penghantaran === */
+.delivery-form-container {
+    margin-top: 40px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.delivery-form-container h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* === Gaya Bahagian Checkout === */
+.checkout-summary-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.btn-payment-option {
+    padding: 12px 20px;
+    border: 2px dotted #6c757d;
+    background-color: transparent;
+    color: #495057;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checkout-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.total-price-display {
+    font-size: 22px;
+    font-weight: bold;
+    color: #212529;
+}
+
+.btn-checkout {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+}
+
+.btn-checkout:hover {
+    background-color: #c82333;
+}
+
+/* === Gaya Responsif === */
+@media (max-width: 768px) {
+    .cart-page-container {
+        padding: 20px;
+    }
+    
+    .checkout-summary-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .checkout-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .total-price-display {
+        text-align: center;
+    }
+
+    .btn-checkout {
+        width: 100%;
+    }
+}
