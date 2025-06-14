@@ -1,0 +1,55 @@
+/* success.css */
+
+.success-container {
+    background: #ffffff;
+    padding: 40px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 600px;
+    margin: 40px auto; /* Menengahkan kotak di halaman */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.success-icon {
+    font-size: 50px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    background-color: #28a745; /* Warna hijau untuk kejayaan */
+    color: #ffffff;
+    margin: 0 auto 20px auto;
+}
+
+.success-container h1 {
+    font-size: 32px;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.success-container p {
+    font-size: 18px;
+    color: #6c757d;
+    margin-bottom: 25px;
+}
+
+.success-container .secondary-text {
+    font-size: 16px;
+    color: #888;
+}
+
+.btn-home {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-home:hover {
+    background-color: #0056b3;
+}

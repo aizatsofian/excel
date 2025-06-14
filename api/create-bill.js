@@ -31,7 +31,7 @@ export default async function handler(request, response) {
             'billPriceSetting': 1,
             'billPayorInfo': 1,
             'billAmount': inputData.total * 100,
-            'billReturnUrl': 'https://excel2.vercel.app/success.html', // URL Selepas Bayaran Berjaya
+            'billReturnUrl': 'https://excel3.vercel.app/success.html', // URL Selepas Bayaran Berjaya
             'billCallbackUrl': '',
             'billExternalReferenceNo': `pesanan-${Date.now()}`,
             'billTo': inputData.customer.name,
