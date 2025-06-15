@@ -162,9 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const initializePage = async () => {
         await Promise.all([
-            loadComponent('header.html', 'header-container'),
-            loadComponent('menu.html', 'menu-container'),
-            loadComponent('footer.html', 'footer-container')
+            loadComponent('../header.html', 'header-container'),
+            loadComponent('../menu.html', 'menu-container'),
+            loadComponent('../footer.html', 'footer-container')
         ]);
         renderCart();
         updateCartCounter();

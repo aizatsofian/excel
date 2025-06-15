@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- LOGIK BARU UNTUK BUTANG "BUY NOW" ---
             if (target.matches('.btn-buy-now')) {
                 addProductToCart(productCard); // 1. Tambah produk ke troli
-                window.location.href = 'cart.html'; // 2. Terus pergi ke halaman troli
+                window.location.href = '/page-cart/cart.html'; // 2. Terus pergi ke halaman troli
             }
         });
     };

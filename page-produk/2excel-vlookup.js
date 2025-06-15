@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Logik untuk butang "Buy Now"
             if (target.matches('.btn-buy-now')) {
                 addProductToCart(productData); // 1. Tambah ke troli
-                window.location.href = '/cart.html'; // 2. Terus ke halaman troli
+                window.location.href = '/page-cart/cart.html'; // 2. Terus ke halaman troli
             }
         });
     };
