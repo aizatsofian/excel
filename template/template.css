@@ -1,7 +1,7 @@
-/* /buku/buku.css */
+/* /template/template.css */
 
-/* Gaya untuk kotak tajuk bahagian buku */
-.buku-title {
+/* Gaya untuk kotak tajuk bahagian templat */
+.template-title {
     background-color: #ffffff;
     border: 1px solid #dee2e6;
     padding: 20px;
@@ -10,7 +10,7 @@
     border-radius: 8px;
 }
 
-.buku-title h2 {
+.template-title h2 {
     text-align: center;
     margin: 0;
     font-size: 24px;
@@ -18,16 +18,17 @@
     color: #343a40;
 }
 
-/* Menambah jarak atas pada tajuk bahagian buku */
-.product-grid + .buku-title {
+/* Menambah jarak atas pada tajuk bahagian templat */
+.product-grid + .template-title {
     margin-top: 50px;
 }
 
 /* Gaya untuk mesej placeholder apabila produk belum tersedia */
+/* Padding dibetulkan supaya tidak terlalu sempit */
 .placeholder-message {
     width: 100%;
     margin: 10px;
-    padding: 50px 20px;
+    padding: 20px 200px;
     text-align: center;
     font-size: 1.3em; 
     font-weight: 500;

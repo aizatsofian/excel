@@ -13,7 +13,7 @@
     background-color: #f8f9fa; /* Warna latar kelabu yang sangat cerah */
 }
 
-.product-section-title {
+.video-title {
     background-color: #ffffff;
     border: 1px solid #dee2e6;
     padding: 20px;
@@ -22,7 +22,7 @@
     border-radius: 8px;
 }
 
-.product-section-title h2 {
+.video-title h2 {
     text-align: center;
     margin: 0;
     font-size: 24px;
