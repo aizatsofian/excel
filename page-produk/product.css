@@ -157,6 +157,6 @@
 /* Untuk skrin telefon bimbit kecil (kurang dari 576px) -> 1 Lajur */
 @media (max-width: 576px) {
     .product-card {
-        width: 100%;
+        width: calc(50% - 13px);
     }
 }
