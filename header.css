@@ -50,3 +50,21 @@
     height: 55px;
     width: auto; /* Lebar akan mengikut nisbah aspek asal */
 }
+
+/* Menjadikan header responsif pada skrin kecil */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column; /* Susun item secara menegak */
+        gap: 10px;              /* Tambah jarak antara item */
+        padding: 20px 15px;
+    }
+
+    .header-center {
+        /* Pastikan teks berada di tengah jika ada perubahan saiz */
+        padding: 0;
+    }
+
+    .site-title {
+        font-size: 22px; /* Kecilkan sedikit saiz fon tajuk */
+    }
+}
