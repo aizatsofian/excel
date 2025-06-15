@@ -54,17 +54,27 @@
 /* Menjadikan header responsif pada skrin kecil */
 @media (max-width: 768px) {
     .site-header {
-        flex-direction: column; /* Susun item secara menegak */
-        gap: 10px;              /* Tambah jarak antara item */
-        padding: 20px 15px;
+        flex-direction: row; /* Kembali ke susunan melintang */
+        justify-content: space-between; /* Jajarkan item semula */
+        align-items: center; /* Pastikan semua item di tengah secara menegak */
+        padding: 10px 15px; /* Kurangkan padding atas/bawah */
+        gap: 10px;
     }
 
-    .header-center {
-        /* Pastikan teks berada di tengah jika ada perubahan saiz */
-        padding: 0;
+    .profile-pic {
+        width: 60px; /* Kecilkan saiz gambar profil */
+        height: 60px;
     }
 
     .site-title {
-        font-size: 22px; /* Kecilkan sedikit saiz fon tajuk */
+        font-size: 16px; /* Kecilkan saiz fon tajuk utama */
+    }
+
+    .whatsapp-info {
+        font-size: 12px; /* Kecilkan fon WhatsApp */
+    }
+
+    .excel-logo {
+        height: 40px; /* Kecilkan saiz logo Excel */
     }
 }

@@ -73,28 +73,27 @@
 /* Menjadikan menu responsif pada skrin kecil */
 @media (max-width: 768px) {
     .main-nav {
-        flex-direction: column; /* Jadikan bekas utama menegak */
-        gap: 20px;              /* Jarak antara senarai pautan dan butang troli */
-        padding: 20px 0;        /* Tambah padding atas & bawah */
+        flex-direction: column; /* Kekalkan susunan menegak untuk bekas utama */
+        padding: 15px;
+        gap: 15px; /* Jarak antara baris pautan dan butang troli */
     }
 
     .nav-links ul {
-        flex-direction: column; /* Susun pautan secara menegak */
-        width: 100%;
+        flex-direction: row; /* Susun pautan secara melintang */
+        flex-wrap: wrap; /* Benarkan pautan turun baris jika tak muat */
+        justify-content: center; /* Tengahkan pautan */
+        gap: 5px; /* Kurangkan jarak antara pautan */
     }
 
     .nav-links a {
-        padding: 12px 0;        /* Ubah padding untuk susunan menegak */
-        text-align: center;     /* Tengahkan teks */
-        border-bottom: 1px solid #343a40; /* Tambah garisan pemisah */
-    }
-
-    .nav-links li:last-child a {
-        border-bottom: none; /* Buang garisan pada item terakhir */
+        padding: 8px 12px; /* Kurangkan padding pautan */
+        font-size: 14px; /* Kecilkan saiz fon */
+        border-bottom: none; /* Buang garisan bawah yang kita tambah sebelum ini */
     }
 
     .nav-cart {
-        position: static;        /* Buang 'position: absolute' */
-        transform: none;         /* Buang 'transform' */
+        position: static;
+        transform: none;
+        /* Butang troli akan secara automatik berada di tengah kerana .main-nav adalah flex column */
     }
 }
