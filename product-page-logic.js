@@ -99,9 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
             loadComponent('header.html', 'header-container'),
             loadComponent('menu.html', 'menu-container'),
             loadComponent('footer.html', 'footer-container'),
-            loadComponent('produk-b1.html', 'produk-b1-container'),
-            loadComponent('produk-b2.html', 'produk-b2-container'),
-            loadComponent('produk-b3.html', 'produk-b3-container')
+            loadComponent('video/produk-b1.html', 'produk-b1-container'),
+            loadComponent('video/produk-b2.html', 'produk-b2-container'),
+            loadComponent('video/produk-b3.html', 'produk-b3-container'),
+            loadComponent('buku/buku1.html', 'buku-produk-container') 
         ]);
         
         setupProductListeners();

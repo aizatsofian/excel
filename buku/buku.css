@@ -1,0 +1,13 @@
+.placeholder-message {
+    width: 1300px;
+    margin: 10px;
+    padding: 10px 50px;
+    text-align: center;
+    font-size: 1.3em; /* Besarkan sedikit fon */
+    font-weight: 500;  /* Tebalkan sedikit fon */
+    color: #5a6a79; 
+    background-color: #fdfdfe; /* Latar belakang lebih cerah */
+    border: none; /* Buang border putus-putus */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Tambah bayang-bayang lembut */
+}

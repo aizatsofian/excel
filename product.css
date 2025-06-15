@@ -13,17 +13,15 @@
     background-color: #f8f9fa; /* Warna latar kelabu yang sangat cerah */
 }
 
-/* Gaya untuk kotak tajuk bahagian produk */
 .product-section-title {
     background-color: #ffffff;
     border: 1px solid #dee2e6;
     padding: 20px;
-    margin-bottom: 30px; /* Jarak antara tajuk dan grid produk */
+    margin-bottom: 15px; /* Jarak antara tajuk dan grid produk */
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     border-radius: 8px;
 }
 
-/* Gaya untuk teks tajuk h2 itu sendiri */
 .product-section-title h2 {
     text-align: center;
     margin: 0;

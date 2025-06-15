@@ -1,6 +1,4 @@
-/* css/header.css */
 
-/* Gaya untuk pembungkus utama header */
 .site-header {
     display: flex; /* Menggunakan Flexbox untuk susun atur yang fleksibel */
     justify-content: space-between; /* Menolak item ke hujung: kiri, tengah, dan kanan */
@@ -10,32 +8,27 @@
     border-bottom: 1px solid #e0e0e0; /* Garisan bawah yang nipis untuk pemisah */
 }
 
-/* Gaya untuk bahagian kiri (gambar profil) */
 .header-left {
     flex-shrink: 0; /* Memastikan ia tidak mengecut jika ruang sempit */
 }
 
-/* Gaya untuk bahagian tengah (tajuk) */
 .header-center {
     flex-grow: 1; /* Membenarkan bahagian tengah membesar untuk mengisi ruang kosong */
     text-align: center; /* Menjajarkan teks di tengah */
     padding: 0 20px; /* Memberi sedikit ruang di kiri dan kanan teks */
 }
 
-/* Gaya untuk bahagian kanan (logo excel) */
 .header-right {
     flex-shrink: 0; /* Memastikan ia tidak mengecut */
 }
 
-/* Gaya untuk gambar profil */
 .profile-pic {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* Menjadikan gambar bulat sepenuhnya */
-    object-fit: cover; /* Memastikan gambar memenuhi bulatan tanpa herot */
+    width: 100px;
+    height: 100px;
+    border-radius: 0; /* Menjadikan gambar bulat sepenuhnya */
+        object-fit: contain; /* Memastikan gambar memenuhi bulatan tanpa herot */
 }
 
-/* Gaya untuk tajuk utama laman web */
 .site-title {
     font-size: 26px;
     font-weight: 400; /* Fon yang tidak terlalu tebal */
@@ -43,19 +36,16 @@
     margin: 0 0 5px 0; /* Menghilangkan margin lalai dan menambah sedikit ruang di bawah */
 }
 
-/* Gaya untuk nama yang ditebalkan */
 .site-title strong {
     font-weight: 700; /* Menjadikan "Dr Aizat" lebih tebal */
 }
 
-/* Gaya untuk info WhatsApp */
 .whatsapp-info {
     font-size: 16px;
     color: #0175c2; /* Warna biru yang sepadan dengan tema */
     margin: 0;
 }
 
-/* Gaya untuk logo Excel */
 .excel-logo {
     height: 55px;
     width: auto; /* Lebar akan mengikut nisbah aspek asal */
