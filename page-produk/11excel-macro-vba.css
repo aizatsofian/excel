@@ -1,0 +1,205 @@
+/* excel-asas.css */
+
+/* ============================================= */
+/* == 1. GAYA ASAS & SUSUN ATUR UTAMA         == */
+/* ============================================= */
+
+.product-detail-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.product-main-info {
+    display: flex;
+    gap: 30px; /* Jarak antara kolum kiri dan kanan */
+    margin-bottom: 40px;
+}
+
+/* ============================================= */
+/* == 2. GAYA KOLUM KIRI (IMEJ & BUTANG)      == */
+/* ============================================= */
+
+.product-gallery {
+    flex: 1; /* Lebar fleksibel, lebih kurang 1/3 ruang */
+    min-width: 280px;
+}
+
+.main-product-image {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    margin-bottom: 20px;
+}
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #212529;
+}
+
+.product-sold-detail {
+    font-size: 16px;
+    color: #6c757d;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antara dua butang */
+}
+
+/* Menggunakan semula gaya .btn dari product.css tetapi dengan sedikit penyesuaian */
+.btn {
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn-add-to-cart {
+    background-color: #ffc107; /* Kuning seperti dalam gambar */
+    color: #212529;
+}
+
+.btn-buy-now {
+    background-color: #dc3545; /* Merah seperti dalam gambar */
+    color: #ffffff;
+}
+
+
+/* ============================================= */
+/* == 3. GAYA KOLUM KANAN (PENERANGAN)        == */
+/* ============================================= */
+
+.product-description {
+    flex: 2; /* Lebar fleksibel, lebih kurang 2/3 ruang */
+}
+
+.product-detail-title {
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.product-description p {
+    font-size: 16px;
+    color: #495057;
+    line-height: 1.6;
+}
+
+.topic-list {
+    list-style-type: decimal; /* Menggunakan nombor */
+    padding-left: 25px;
+    font-size: 16px;
+    color: #343a40;
+}
+
+.topic-list li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.topic-list li::marker {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Gaya untuk highlight teks seperti dalam gambar */
+.topic-list strong {
+    color: #c82333; /* Warna merah untuk highlight */
+    font-weight: 600;
+    border-bottom: 2px dotted #ffc107; /* Garis putus-putus kuning */
+    padding-bottom: 1px;
+}
+
+
+/* ============================================= */
+/* == 4. GAYA BAHAGIAN FEEDBACK               == */
+/* ============================================= */
+
+.feedback-section {
+    padding-top: 30px;
+    border-top: 1px solid #e9ecef;
+}
+
+.feedback-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #343a40;
+}
+
+.feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dua kolum */
+    gap: 20px;
+}
+
+.feedback-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.feedback-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Bulat */
+    background-color: #ced4da; /* Warna placeholder untuk avatar */
+    flex-shrink: 0;
+}
+
+.feedback-card p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* ============================================= */
+/* == 5. REKA BENTUK RESPONSIF (MEDIA QUERY)  == */
+/* ============================================= */
+
+@media (max-width: 768px) {
+    .product-main-info {
+        flex-direction: column; /* Tukar jadi satu kolum */
+    }
+
+    .feedback-grid {
+        grid-template-columns: 1fr; /* Satu kolum sahaja */
+    }
+
+    .product-detail-container {
+        padding: 20px;
+    }
+
+    .product-detail-title {
+        font-size: 28px;
+    }
+}
