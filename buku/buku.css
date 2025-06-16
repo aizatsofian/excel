@@ -24,10 +24,10 @@
 }
 
 /* Gaya untuk mesej placeholder apabila produk belum tersedia */
-.placeholder-message {
+.buku-placeholder {
     width: 100%;
-    margin: 10px;
-    padding: 50px 20px;
+    margin: 0px;
+    padding: 20px 200px;
     text-align: center;
     font-size: 1.3em; 
     font-weight: 500;
@@ -35,4 +35,26 @@
     background-color: #fdfdfe;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+}
+
+/* Kod Responsif untuk skrin kecil */
+@media (max-width: 768px) {
+
+    /* Kurangkan saiz fon untuk tajuk bahagian buku */
+    .buku-title h2 {
+        font-size: 20px;
+    }
+
+    /* Kurangkan jarak atas untuk tajuk bahagian buku */
+    .product-grid + .buku-title {
+        margin-top: 10px;
+    }
+
+    /* Kemas kini gaya untuk mesej placeholder */
+    .buku-placeholder {
+        padding: 10px 15px;
+        font-size: 1em;
+        margin-top: -25px;
+        margin-bottom: -100px; /* Tambah jarak bawah untuk keselesaan */
+    }
 }

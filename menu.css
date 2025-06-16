@@ -87,7 +87,7 @@
 
     .nav-links a {
         padding: 8px 12px; /* Kurangkan padding pautan */
-        font-size: 10px; /* Kecilkan saiz fon */
+        font-size: 12px; /* Kecilkan saiz fon */
         border-bottom: none; /* Buang garisan bawah yang kita tambah sebelum ini */
     }
 

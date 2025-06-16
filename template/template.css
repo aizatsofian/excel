@@ -25,9 +25,9 @@
 
 /* Gaya untuk mesej placeholder apabila produk belum tersedia */
 /* Padding dibetulkan supaya tidak terlalu sempit */
-.placeholder-message {
+.template-placeholder {
     width: 100%;
-    margin: 10px;
+    margin: 0px;
     padding: 20px 200px;
     text-align: center;
     font-size: 1.3em; 
@@ -36,4 +36,25 @@
     background-color: #fdfdfe;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+}
+
+/* Kod Responsif untuk skrin kecil */
+@media (max-width: 768px) {
+
+    /* Kurangkan saiz fon untuk tajuk bahagian buku */
+    .template-title h2 {
+        font-size: 20px;
+    }
+
+    /* Kurangkan jarak atas untuk tajuk bahagian buku */
+    .product-grid + .template-title {
+        margin-top: 50px;
+    }
+
+    /* Kemas kini gaya untuk mesej placeholder */
+    .template-placeholder {
+        padding: 10px 15px;
+        font-size: 0.8em;
+        margin-top: -25px;
+    }
 }
