@@ -74,7 +74,7 @@
 @media (max-width: 768px) {
     .main-nav {
         flex-direction: column; /* Kekalkan susunan menegak untuk bekas utama */
-        padding: 15px;
+        padding: 5px;
         gap: 15px; /* Jarak antara baris pautan dan butang troli */
     }
 
@@ -82,12 +82,12 @@
         flex-direction: row; /* Susun pautan secara melintang */
         flex-wrap: wrap; /* Benarkan pautan turun baris jika tak muat */
         justify-content: center; /* Tengahkan pautan */
-        gap: 5px; /* Kurangkan jarak antara pautan */
+        gap: 0px; /* Kurangkan jarak antara pautan */
     }
 
     .nav-links a {
         padding: 8px 12px; /* Kurangkan padding pautan */
-        font-size: 14px; /* Kecilkan saiz fon */
+        font-size: 10px; /* Kecilkan saiz fon */
         border-bottom: none; /* Buang garisan bawah yang kita tambah sebelum ini */
     }
 

@@ -16,7 +16,7 @@
 .video-title {
     background-color: #ffffff;
     border: 1px solid #dee2e6;
-    padding: 20px;
+    padding: 10px;
     margin-bottom: 15px; /* Jarak antara tajuk dan grid produk */
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     border-radius: 8px;
@@ -25,7 +25,7 @@
 .video-title h2 {
     text-align: center;
     margin: 0;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: #343a40;
 }
@@ -130,20 +130,6 @@
 * Ini memastikan susun atur kelihatan baik pada saiz skrin yang berbeza.
 */
 
-/* Untuk skrin tablet besar (kurang dari 1200px) -> 4 Lajur */
-@media (max-width: 1200px) {
-    .product-card {
-        width: calc(25% - 19px); /* Pastikan ada ruang di sini */
-    }
-}
-
-/* Untuk skrin tablet (kurang dari 992px) -> 3 Lajur */
-@media (max-width: 992px) {
-    .product-card {
-        width: calc(33.33% - 17px); /* Pastikan ada ruang di sini */
-    }
-}
-
 /* Untuk skrin telefon bimbit besar (kurang dari 768px) -> 2 Lajur */
 @media (max-width: 768px) {
     .product-card {
@@ -152,11 +138,9 @@
     .main-content {
         padding: 20px;
     }
-}
-
-/* Untuk skrin telefon bimbit kecil (kurang dari 576px) -> 1 Lajur */
-@media (max-width: 576px) {
-    .product-card {
-        width: calc(50% - 13px);
+=
+/* Kod ini mengecilkan saiz tajuk video pada paparan mobile */
+    .video-title h2 {
+        font-size: 20px; 
     }
 }
