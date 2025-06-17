@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
         1: 'https://www.youtube.com/watch?v=6j6kdpStCrI',  // Excel Asas
         2: 'https://www.youtube.com/watch?v=NTjTcCOkN34',  // Excel Vlookup
         3: 'https://www.youtube.com/watch?v=FBkei_ymuts',  // Excel Pivot Table
+        4: 'https://youtu.be/GTqRGyFAeGw', // Excel Analisis Data
+        5: 'https://youtu.be/yP84vEdnDQw', // Excel Formula
+        6: 'https://youtu.be/zwM2laE38to', // Excel Power Query
+        7: 'https://youtu.be/PiSjbFJkl5g', // Excel Finance
+        8: 'https://youtu.be/buJ_4RMdF5k', // Excel Power Pivot 
+        9: 'https://youtu.be/vgNFV2IcEdc', // Excel Dashboard
+        10: 'https://youtu.be/TqXwz_aQ83s', // Excel Power BI
+        11: 'https://youtu.be/H_lmmRCPMxY', // Excel Macro VBA
+        12: 'https://youtu.be/0cFTSli5S9A', // Excel Chart Graph
         // ... tambah ID dan pautan untuk 10 produk lain di sini jika ada
     };
 
