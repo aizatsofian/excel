@@ -56,18 +56,15 @@ module.exports = async function handler(req, res) {
       billExternalReferenceNo: `order-${Date.now()}`,
       billTo: (name || 'Pelanggan').substring(0, 100),
       billEmail: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : 'dummy@email.com',
-      billPhone: mobile.replace(/\D/g, '').substring(0, 12) || '0111111111'
+      billPhone: mobile?.replace(/\D/g, '').substring(0, 12) || '0111111111'
     };
 
-console.log("====== DEBUG ToyyibPay Payload ======");
-console.log("userSecretKey:", process.env.TOYYIBPAY_SECRET_KEY);
-console.log("categoryCode:", process.env.TOYYIBPAY_CATEGORY_CODE);
-console.log("billData:", billData);
-console.log("======================================");
-
-
-    // Log debug ke Vercel
-    console.log("🧾 BillData ToyyibPay:", billData);
+    // Debug log ke Vercel
+    console.log("====== DEBUG ToyyibPay Payload ======");
+    console.log("userSecretKey:", process.env.TOYYIBPAY_SECRET_KEY);
+    console.log("categoryCode:", process.env.TOYYIBPAY_CATEGORY_CODE);
+    console.log("billData:", billData);
+    console.log("======================================");
 
     // Hantar ke ToyyibPay
     const toyyibpayResponse = await fetch('https://toyyibpay.com/index.php/api/createBill', {
@@ -79,7 +76,7 @@ console.log("======================================");
     const bill = await toyyibpayResponse.json();
 
     if (!bill || !bill[0] || !bill[0].BillCode) {
-      throw new Error('❌ Gagal cipta bil ToyyibPay.');
+      return res.status(400).json({ error: '❌ ToyyibPay gagal cipta bil. Sila semak maklumat.' });
     }
 
     const billCode = bill[0].BillCode;
