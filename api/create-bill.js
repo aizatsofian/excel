@@ -47,8 +47,8 @@ export default async function handler(req, res) {
         }
         
         const billData = {
-            'userSecretKey': process.env.r1w0bv75-rlqt-k35b-gqal-mzxse5so0x2l,
-            'categoryCode': process.env.rgzqza7v,
+            'userSecretKey': process.env.TOYYIBPAY_SECRET_KEY,
+            'categoryCode': process.env.TOYYIBPAY_CATEGORY_CODE,
             'billName': 'Pembelian Kursus Excel',
             'billDescription': `Pembayaran untuk ${items.length} produk dari ${name}`,
             'billPriceSetting': 1,
