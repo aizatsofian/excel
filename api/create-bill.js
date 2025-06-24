@@ -18,13 +18,19 @@ module.exports = async function handler(req, res) {
     }
 
     // Dapatkan senarai produk
-    const productListUrl = new URL('/api/products.json', `https://${req.headers.host}`);
-    const productsResponse = await fetch(productListUrl.href);
-    if (!productsResponse.ok) {
-      throw new Error(`Gagal muat products.json: ${productsResponse.statusText}`);
-    }
+const allProducts = [
+  { id: 1, name: "Excel Asas", price: 10 },
+  { id: 2, name: "Excel Vlookup", price: 10 },
+  { id: 3, name: "Excel Pivot Table", price: 10 },
+  { id: 4, name: "Excel Analisis Data", price: 10 },
+  { id: 5, name: "Excel Formula", price: 10 },
+  { id: 6, name: "Excel Power Query", price: 10 },
+  { id: 7, name: "Excel Finance", price: 10 },
+  { id: 8, name: "Excel Power Pivot", price: 10 },
+  { id: 9, name: "Excel Dashboard", price: 10 },
+  { id: 10, name: "Power BI", price: 10 }
+];
 
-    const allProducts = await productsResponse.json();
 const productMap = allProducts.reduce((map, product) => {
   map[parseInt(product.id)] = product; // pastikan key dalam bentuk nombor
   return map;
