@@ -93,12 +93,6 @@ const productMap = allProducts.reduce((map, product) => {
 
     const billCode = bill[0].BillCode;
 
-    // Simpan ke Redis KV
-    await kv.set(`order_${billCode}`, {
-      customerName: name,
-      purchasedIds: purchasedProductIds
-    }, { ex: 3600 });
-
     console.log("✅ Tamat proses create-bill, bil berjaya:", billCode);
 
     res.status(200).json(bill);
