@@ -1,5 +1,3 @@
-// File: api/create-bill.js
-
 import { kv } from '@vercel/kv';
 import fetch from 'node-fetch';
 
@@ -17,12 +15,13 @@ export default async function handler(req, res) {
 
         const productListUrl = new URL('/api/products.json', `https://${req.headers.host}`);
         const productsResponse = await fetch(productListUrl.href);
-        
+
         if (!productsResponse.ok) {
             throw new Error(`Gagal memuatkan products.json: ${productsResponse.statusText}`);
         }
+
         const allProducts = await productsResponse.json();
-        
+
         const productMap = allProducts.reduce((map, product) => {
             map[product.id] = product;
             return map;
@@ -42,16 +41,16 @@ export default async function handler(req, res) {
         if (totalAmount === 0) {
             return res.status(400).json({ error: 'Tiada produk sah untuk diproses.' });
         }
-        
+
         const billData = {
-            'userSecretKey': process.env.r1w0bv75-rlqt-k35b-gqal-mzxse5so0x2l,
-            'categoryCode': process.env.rgzqza7v,
+            'userSecretKey': process.env.TOYYIBPAY_SECRET_KEY,
+            'categoryCode': process.env.TOYYIBPAY_CATEGORY_CODE,
             'billName': 'Pembelian Produk Excel Mudah',
             'billDescription': `Pembayaran untuk ${items.length} produk dari ${name}`,
             'billPriceSetting': 1,
             'billPayorInfo': 1,
             'billAmount': Math.round(totalAmount * 100),
-            'billReturnUrl': 'https://excelmudah.vercel.app/success.html', // Pastikan URL ini betul
+            'billReturnUrl': 'https://excelmudah.vercel.app/success.html',
             'billCallbackUrl': '',
             'billExternalReferenceNo': `order-${Date.now()}`,
             'billTo': name,
@@ -84,17 +83,4 @@ export default async function handler(req, res) {
         console.error('Create bill error:', error);
         res.status(500).json({ error: 'Ralat pada server.' });
     }
-}
-
-export default async function handler(req, res) {
-  try {
-    console.log("Start create-bill");
-
-    // ... kod anda
-
-    res.status(200).json({ success: true });
-  } catch (error) {
-    console.error("ERROR in create-bill:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
 }
