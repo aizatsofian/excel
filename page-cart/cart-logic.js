@@ -117,7 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const payload = { customer: customerData, items: cart, total: totalAmount };
+        const payload = {
+  name: customerData.name,
+  email: customerData.email,
+  mobile: customerData.phone,
+  address: customerData.address,
+  items: cart,
+  total: totalAmount
+};
         
         try {
             console.log("Menghantar data ke Google Sheet...");
