@@ -15,12 +15,9 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: 'Maklumat tidak lengkap.' });
         }
 
-        // === BAHAGIAN DIKEMAS KINI ===
-        // Memuatkan products.json dari laluan /api/products.json
-        const productListUrl = new URL('/api/products.json', `http://${req.headers.host}`);
+        const productListUrl = new URL('/api/products.json', `https://${req.headers.host}`);
         const productsResponse = await fetch(productListUrl.href);
-        // === TAMAT BAHAGIAN DIKEMAS KINI ===
-
+        
         if (!productsResponse.ok) {
             throw new Error(`Gagal memuatkan products.json: ${productsResponse.statusText}`);
         }
@@ -49,12 +46,12 @@ export default async function handler(req, res) {
         const billData = {
             'userSecretKey': process.env.TOYYIBPAY_SECRET_KEY,
             'categoryCode': process.env.TOYYIBPAY_CATEGORY_CODE,
-            'billName': 'Pembelian Kursus Excel',
+            'billName': 'Pembelian Produk Excel Mudah',
             'billDescription': `Pembayaran untuk ${items.length} produk dari ${name}`,
             'billPriceSetting': 1,
             'billPayorInfo': 1,
             'billAmount': Math.round(totalAmount * 100),
-            'billReturnUrl': 'https://excelmudah.vercel.app/success.html', // GANTIKAN DENGAN DOMAIN ANDA
+            'billReturnUrl': 'https://excelmudah.vercel.app/success.html', // Pastikan URL ini betul
             'billCallbackUrl': '',
             'billExternalReferenceNo': `order-${Date.now()}`,
             'billTo': name,

@@ -14,14 +14,12 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Dapatkan butiran pesanan dari Vercel KV menggunakan billCode
         const orderDetails = await kv.get(`order_${billCode}`);
 
         if (!orderDetails) {
             return res.status(404).json({ error: 'Butiran pesanan tidak ditemui.' });
         }
 
-        // Hantar butiran pesanan kembali ke client-side
         res.status(200).json(orderDetails);
         
     } catch (error) {
