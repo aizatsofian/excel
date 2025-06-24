@@ -46,8 +46,8 @@ module.exports = async function handler(req, res) {
     const billData = {
       userSecretKey: process.env.TOYYIBPAY_SECRET_KEY || 'MISSING_SECRET_KEY',
       categoryCode: process.env.TOYYIBPAY_CATEGORY_CODE || 'MISSING_CATEGORY_CODE',
-      billName: 'Pembelian Produk Excel Mudah',
-      billDescription: `Pembayaran untuk ${items.length} produk`,
+      billName: 'Pembelian Produk Excel',
+      billDescription: `Pembayaran ${items.length} produk`,
       billPriceSetting: 1,
       billPayorInfo: 1,
       billAmount: Math.round(totalAmount * 100), // RM50 = 5000
