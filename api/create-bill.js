@@ -47,19 +47,19 @@ module.exports = async function handler(req, res) {
 
     // Sediakan data untuk ToyyibPay
 const billData = {
-  userSecretKey: process.env.TOYYIBPAY_SECRET_KEY || 'MISSING',
-  categoryCode: process.env.TOYYIBPAY_CATEGORY_CODE || 'MISSING',
+  userSecretKey: process.env.TOYYIBPAY_SECRET_KEY || 'MISSING_SECRET_KEY',
+  categoryCode: process.env.TOYYIBPAY_CATEGORY_CODE || 'MISSING_CATEGORY_CODE',
   billName: 'Pembelian Produk Excel Mudah',
-  billDescription: `Pembayaran untuk ${items?.length || 1} produk oleh pelanggan.`,
+  billDescription: `Pembayaran untuk ${items?.length || 1} produk`,
   billPriceSetting: 1,
   billPayorInfo: 1,
-  billAmount: Math.round(totalAmount * 100), // Wajib > 100
+  billAmount: Math.round(totalAmount * 100), // RM50 = 5000
   billReturnUrl: 'https://excelmudah.vercel.app/success.html',
   billCallbackUrl: '',
   billExternalReferenceNo: `order-${Date.now()}`,
-  billTo: name?.substring(0, 100) || 'Pelanggan',
+  billTo: (name || 'Pelanggan').substring(0, 100),
   billEmail: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : 'dummy@email.com',
-  billPhone: mobile?.replace(/\D/g, '').substring(0, 12) || '0111111111'
+  billPhone: mobile.replace(/\D/g, '').substring(0, 12) || '0111111111'
 };
 
 // ✅ BARU boleh log
@@ -71,7 +71,17 @@ console.log("🔎 Hantar ke ToyyibPay:", {
   billPhone: mobile.replace(/\D/g, '')
 });
 
-    // Hantar permintaan ke ToyyibPay
+console.log("🧾 BillData yang dihantar ke ToyyibPay:");
+console.log({
+  userSecretKey: process.env.TOYYIBPAY_SECRET_KEY,
+  categoryCode: process.env.TOYYIBPAY_CATEGORY_CODE,
+  billTo: name,
+  billEmail: email,
+  billPhone: mobile,
+  billAmount: Math.round(totalAmount * 100)
+});
+
+ // Hantar permintaan ke ToyyibPay
     const toyyibpayResponse = await fetch('https://toyyibpay.com/index.php/api/createBill', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
