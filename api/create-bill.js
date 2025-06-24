@@ -90,3 +90,5 @@ module.exports = async function handler(req, res) {
     res.status(500).json({ error: 'Ralat pada server.' });
   }
 };
+
+console.log('🧾 Data bil dihantar ke ToyyibPay:', billData);
