@@ -46,21 +46,24 @@ module.exports = async function handler(req, res) {
     }
 
     // Sediakan data untuk ToyyibPay
-    const billData = {
-      userSecretKey: process.env.TOYYIBPAY_SECRET_KEY,
-      categoryCode: process.env.TOYYIBPAY_CATEGORY_CODE,
-      billName: 'Pembelian Produk Excel Mudah',
-      billDescription: `Pembayaran untuk ${items.length} produk dari ${name}`,
-      billPriceSetting: 1,
-      billPayorInfo: 1,
-      billAmount: Math.round(totalAmount * 100),
-      billReturnUrl: 'https://excelmudah.vercel.app/success.html',
-      billCallbackUrl: '',
-      billExternalReferenceNo: `order-${Date.now()}`,
-      billTo: name,
-      billEmail: email,
-      billPhone: mobile
-    };
+const billData = {
+  userSecretKey: process.env.TOYYIBPAY_SECRET_KEY,
+  categoryCode: process.env.TOYYIBPAY_CATEGORY_CODE,
+  billName: 'Pembelian Produk Excel Mudah',
+  billDescription: `Pembayaran untuk ${items?.length || 1} produk oleh pelanggan.`,
+  billPriceSetting: 1,
+  billPayorInfo: 1,
+  billAmount: Math.round(totalAmount * 100),
+  billReturnUrl: 'https://excelmudah.vercel.app/success.html',
+  billCallbackUrl: '',
+  billExternalReferenceNo: `order-${Date.now()}`,
+  billTo: name?.substring(0, 100) || 'Pelanggan',
+  billEmail: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : 'dummy@email.com',
+  billPhone: mobile?.replace(/\D/g, '').substring(0, 15) || '0111111111'
+};
+
+// ✅ BARU boleh log
+console.log("Bill data dihantar ke ToyyibPay:", billData);
 
     // Hantar permintaan ke ToyyibPay
     const toyyibpayResponse = await fetch('https://toyyibpay.com/index.php/api/createBill', {
@@ -90,5 +93,3 @@ module.exports = async function handler(req, res) {
     res.status(500).json({ error: 'Ralat pada server.' });
   }
 };
-
-console.log('🧾 Data bil dihantar ke ToyyibPay:', billData);
