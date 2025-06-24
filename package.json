@@ -1,7 +1,7 @@
 {
   "name": "mudahnya-belajar-excel",
   "version": "1.0.0",
-  "description": "Laman web untuk tutorial Excel Or Aizat",
+  "description": "Laman web untuk tutorial Excel oleh Dr Aizat",
   "main": "index.html",
   "scripts": {
     "start": "echo \"Error: no start script specified\" && exit 1"
@@ -13,6 +13,6 @@
   },
   "dependencies": {
     "@vercel/kv": "^3.0.0",
-    "node-fetch": "^3.4.0"
+    "node-fetch": "^3.3.2"
   }
 }
