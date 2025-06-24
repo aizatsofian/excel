@@ -148,9 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const toyyibpayResult = await toyyibpayResponse.json();
 
-            if (toyyibpayResult[0] && toyyibpayResult[0].billCode) {
-                window.location.href = `https://toyyibpay.com/${toyyibpayResult[0].billCode}`;
-            } else {
+            if (toyyibpayResult[0] && (toyyibpayResult[0].billCode || toyyibpayResult[0].BillCode)) {
+  const billCode = toyyibpayResult[0].billCode || toyyibpayResult[0].BillCode;
+  window.location.href = `https://toyyibpay.com/${billCode}`;
+}
+ else {
                 alert('Ralat ToyyibPay: ' + (toyyibpayResult.message || 'Gagal mencipta bil adui.'));
                 checkoutButton.disabled = false;
                 checkoutButton.textContent = 'Check Out';
