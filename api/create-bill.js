@@ -1,65 +1,90 @@
-// /api/create-bill.js
+// File: api/create-bill.js
 
-export default async function handler(request, response) {
-    if (request.method !== 'POST') {
-        return response.status(405).json({ message: 'Method Not Allowed' });
+import { kv } from '@vercel/kv';
+import fetch from 'node-fetch';
+
+export default async function handler(req, res) {
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
     try {
-        const inputData = request.body;
-        console.log("Data diterima dari pelanggan:", JSON.stringify(inputData, null, 2));
+        const { name, email, mobile, items } = req.body;
 
-        const userSecretKey = process.env.TOYYIBPAY_SECRET_KEY;
-        const categoryCode = process.env.TOYYIBPAY_CATEGORY_CODE;
-
-        // Log untuk pastikan environment variables dibaca dengan betul
-        console.log("Secret Key Digunakan:", userSecretKey ? "Ada" : "TIADA");
-        console.log("Category Code Digunakan:", categoryCode ? "Ada" : "TIADA");
-
-        if (!userSecretKey || !categoryCode) {
-            throw new Error("Secret Key atau Category Code tidak ditetapkan di Environment Variables Vercel.");
+        if (!name || !email || !mobile || !items || items.length === 0) {
+            return res.status(400).json({ error: 'Maklumat tidak lengkap.' });
         }
 
-        const billDescription = "Pembayaran untuk: " + 
-            inputData.items.map(item => `${item.quantity}x ${item.name}`).join(', ');
+        // === BAHAGIAN DIKEMAS KINI ===
+        // Memuatkan products.json dari laluan /api/products.json
+        const productListUrl = new URL('/api/products.json', `http://${req.headers.host}`);
+        const productsResponse = await fetch(productListUrl.href);
+        // === TAMAT BAHAGIAN DIKEMAS KINI ===
 
-        const toyyibpayData = new URLSearchParams({
-            'userSecretKey': userSecretKey,
-            'categoryCode': categoryCode,
-            'billName': 'Pesanan Laman Web Dr Aizat',
-            'billDescription': billDescription,
+        if (!productsResponse.ok) {
+            throw new Error(`Gagal memuatkan products.json: ${productsResponse.statusText}`);
+        }
+        const allProducts = await productsResponse.json();
+        
+        const productMap = allProducts.reduce((map, product) => {
+            map[product.id] = product;
+            return map;
+        }, {});
+
+        let totalAmount = 0;
+        const purchasedProductIds = [];
+
+        items.forEach(item => {
+            const product = productMap[item.id];
+            if (product) {
+                totalAmount += parseFloat(product.price) * item.quantity;
+                purchasedProductIds.push(item.id);
+            }
+        });
+
+        if (totalAmount === 0) {
+            return res.status(400).json({ error: 'Tiada produk sah untuk diproses.' });
+        }
+        
+        const billData = {
+            'userSecretKey': process.env.TOYYIBPAY_SECRET_KEY,
+            'categoryCode': process.env.TOYYIBPAY_CATEGORY_CODE,
+            'billName': 'Pembelian Kursus Excel',
+            'billDescription': `Pembayaran untuk ${items.length} produk dari ${name}`,
             'billPriceSetting': 1,
             'billPayorInfo': 1,
-            'billAmount': inputData.total * 100,
-            'billReturnUrl': 'https://excel3.vercel.app/success.html', // URL Selepas Bayaran Berjaya
+            'billAmount': Math.round(totalAmount * 100),
+            'billReturnUrl': 'https://your-live-domain.com/success.html', // GANTIKAN DENGAN DOMAIN ANDA
             'billCallbackUrl': '',
-            'billExternalReferenceNo': `pesanan-${Date.now()}`,
-            'billTo': inputData.customer.name,
-            'billEmail': inputData.customer.email,
-            'billPhone': inputData.customer.phone,
-            'billPaymentChannel': '2',
-        });
-        
+            'billExternalReferenceNo': `order-${Date.now()}`,
+            'billTo': name,
+            'billEmail': email,
+            'billPhone': mobile,
+        };
+
         const toyyibpayResponse = await fetch('https://toyyibpay.com/index.php/api/createBill', {
             method: 'POST',
-            body: toyyibpayData,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(billData),
         });
 
-        // Log respon mentah dari ToyyibPay
-        const responseText = await toyyibpayResponse.text();
-        console.log("Respon dari ToyyibPay:", responseText);
-        
-        const toyyibpayResult = JSON.parse(responseText);
+        const bill = await toyyibpayResponse.json();
 
-        if (Array.isArray(toyyibpayResult) && toyyibpayResult[0] && toyyibpayResult[0].BillCode) {
-            response.status(200).json({ success: true, billCode: toyyibpayResult[0].BillCode });
-        } else {
-            // Jika ToyyibPay pulangkan ralat, kita boleh lihat di log
-            response.status(500).json({ success: false, message: 'Gagal mencipta bil di ToyyibPay.' });
+        if (!bill || !bill[0] || !bill[0].BillCode) {
+            throw new Error('Gagal mencipta bil ToyyibPay.');
         }
 
+        const billCode = bill[0].BillCode;
+
+        await kv.set(`order_${billCode}`, {
+            customerName: name,
+            purchasedIds: purchasedProductIds
+        }, { ex: 3600 });
+
+        res.status(200).json(bill);
+
     } catch (error) {
-        console.error("RALAT DALAM FUNGSI SERVERLESS:", error.message);
-        response.status(500).json({ success: false, message: 'Berlaku ralat pada pelayan.', error: error.message });
+        console.error('Create bill error:', error);
+        res.status(500).json({ error: 'Ralat pada server.' });
     }
 }

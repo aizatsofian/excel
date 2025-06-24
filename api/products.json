@@ -1,0 +1,110 @@
+[
+    {
+        "id": "1",
+        "name": "Video Tutorial Excel Asas",
+        "price": "10.00",
+        "image": "img/v1.png",
+        "sold": "152",
+        "pageUrl": "page-produk/1video-tutorial-excel-asas.html",
+        "downloadUrl": "https://www.youtube.com/watch?v=6j6kdpStCrI"
+    },
+    {
+        "id": "2",
+        "name": "Video Tutorial Excel Intermediate",
+        "price": "15.00",
+        "image": "img/v2.png",
+        "sold": "118",
+        "pageUrl": "page-produk/2video-tutorial-excel-intermediate.html",
+        "downloadUrl": "https://www.youtube.com/watch?v=NTjTcCOkN34"
+    },
+    {
+        "id": "3",
+        "name": "Video Tutorial Excel Advanced",
+        "price": "20.00",
+        "image": "img/v3.png",
+        "sold": "98",
+        "pageUrl": "page-produk/3video-tutorial-excel-advanced.html",
+        "downloadUrl": "https://www.youtube.com/watch?v=FBkei_ymuts"
+    },
+    {
+        "id": "4",
+        "name": "Buku Formula Excel",
+        "price": "25.00",
+        "image": "img/b1.png",
+        "sold": "210",
+        "pageUrl": "page-produk/4buku-formula-excel.html",
+        "downloadUrl": "https://youtu.be/GTqRGyFAeGw"
+    },
+    {
+        "id": "5",
+        "name": "Templat Dashboard Kewangan",
+        "price": "30.00",
+        "image": "img/t1.png",
+        "sold": "75",
+        "pageUrl": "page-produk/5templat-dashboard-kewangan.html",
+        "downloadUrl": "https://PAUTAN-SEBENAR-PRODUK-ANDA.com/templat-kewangan"
+    },
+    {
+        "id": "6",
+        "name": "Tips & Tricks Excel Pantas",
+        "price": "5.00",
+        "image": "img/v4.png",
+        "sold": "305",
+        "pageUrl": "page-produk/6tips-tricks-excel-pantas.html",
+        "downloadUrl": "https://PAUTAN-SEBENAR-PRODUK-ANDA.com/tips-pantas"
+    },
+    {
+        "id": "7",
+        "name": "Excel Power Query",
+        "price": "10.00",
+        "image": "img/db1.PNG",
+        "sold": "12 Sold",
+        "pageUrl": "page-produk/7excel-power-query.html",
+        "downloadUrl": "https://PAUTAN-SEBENAR-PRODUK-ANDA.com/power-query"
+    },
+    {
+        "id": "8",
+        "name": "Excel Pivot Table",
+        "price": "10.00",
+        "image": "img/db4.png",
+        "sold": "62 Sold",
+        "pageUrl": "page-produk/8excel-pivot-table.html",
+        "downloadUrl": "https://PAUTAN-SEBENAR-PRODUK-ANDA.com/pivot-table"
+    },
+    {
+        "id": "9",
+        "name": "Templat Invois",
+        "price": "10.00",
+        "image": "img/t2.png",
+        "sold": "12 Sold",
+        "pageUrl": "page-produk/9templat-invois.html",
+        "downloadUrl": "https://PAUTAN-SEBENAR-PRODUK-ANDA.com/templat-invois"
+    },
+    {
+        "id": "10",
+        "name": "Buku Excel Lengkap",
+        "price": "10.00",
+        "image": "img/b2.png",
+        "sold": "22 Sold",
+        "pageUrl": "page-produk/10buku-excel-lengkap.html",
+        "downloadUrl": "https://PAUTAN-SEBENAR-PRODUK-ANDA.com/buku-lengkap"
+    },
+    {
+        "id": "11",
+        "name": "Excel Macro & VBA",
+        "price": "10.00",
+        "image": "img/db2.PNG",
+        "sold": "52 Sold",
+        "pageUrl": "page-produk/11excel-macro-vba.html",
+        "downloadUrl": "https://PAUTAN-SEBENAR-PRODUK-ANDA.com/macro-vba"
+    },
+    {
+        "id": "12",
+        "name": "Excel Chart & Graph",
+        "price": "10.00",
+        "image": "img/db3.png",
+        "sold": "25 Sold",
+        "pageUrl": "page-produk/12excel-chart-graph.html",
+        "downloadUrl": "https://PAUTAN-SEBENAR-PRODUK-ANDA.com/chart-graph"
+    }
+]
