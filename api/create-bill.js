@@ -25,17 +25,17 @@ module.exports = async function handler(req, res) {
     }
 
     const allProducts = await productsResponse.json();
-    const productMap = allProducts.reduce((map, product) => {
-      map[product.id] = product;
-      return map;
-    }, {});
+const productMap = allProducts.reduce((map, product) => {
+  map[parseInt(product.id)] = product; // pastikan key dalam bentuk nombor
+  return map;
+}, {});
 
     // Kira jumlah
     let totalAmount = 0;
     const purchasedProductIds = [];
 
     items.forEach(item => {
-      const product = productMap[item.id];
+      const product = productMap[parseInt(item.id)];
       if (product) {
         totalAmount += parseFloat(product.price) * item.quantity;
         purchasedProductIds.push(item.id);
