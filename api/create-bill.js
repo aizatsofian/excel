@@ -54,7 +54,7 @@ export default async function handler(req, res) {
             'billPriceSetting': 1,
             'billPayorInfo': 1,
             'billAmount': Math.round(totalAmount * 100),
-            'billReturnUrl': 'https://your-live-domain.com/success.html', // GANTIKAN DENGAN DOMAIN ANDA
+            'billReturnUrl': 'https://https://excelmudah.vercel.app/.com/success.html', // GANTIKAN DENGAN DOMAIN ANDA
             'billCallbackUrl': '',
             'billExternalReferenceNo': `order-${Date.now()}`,
             'billTo': name,
