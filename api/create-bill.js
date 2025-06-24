@@ -6,8 +6,12 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
+  console.log("✅ Mula proses create-bill");
+
   try {
     const { name, email, mobile, items } = req.body;
+
+    console.log("📥 Data pengguna:", { name, email, mobile, items });
 
     if (!name || !email || !mobile || !items || items.length === 0) {
       return res.status(400).json({ error: 'Maklumat tidak lengkap.' });
@@ -59,12 +63,12 @@ module.exports = async function handler(req, res) {
       billPhone: mobile?.replace(/\D/g, '').substring(0, 12) || '0111111111'
     };
 
-    // Debug log ke Vercel
+    // Debug ke Vercel Logs
     console.log("====== DEBUG ToyyibPay Payload ======");
-    console.log("userSecretKey:", process.env.TOYYIBPAY_SECRET_KEY);
-    console.log("categoryCode:", process.env.TOYYIBPAY_CATEGORY_CODE);
-    console.log("billData:", billData);
-    console.log("======================================");
+    console.log("✅ userSecretKey:", process.env.TOYYIBPAY_SECRET_KEY);
+    console.log("✅ categoryCode:", process.env.TOYYIBPAY_CATEGORY_CODE);
+    console.log("🧾 billData:", billData);
+    console.log("=====================================");
 
     // Hantar ke ToyyibPay
     const toyyibpayResponse = await fetch('https://toyyibpay.com/index.php/api/createBill', {
@@ -74,6 +78,8 @@ module.exports = async function handler(req, res) {
     });
 
     const bill = await toyyibpayResponse.json();
+
+    console.log("📤 Respon ToyyibPay:", bill);
 
     if (!bill || !bill[0] || !bill[0].BillCode) {
       return res.status(400).json({ error: '❌ ToyyibPay gagal cipta bil. Sila semak maklumat.' });
@@ -86,6 +92,8 @@ module.exports = async function handler(req, res) {
       customerName: name,
       purchasedIds: purchasedProductIds
     }, { ex: 3600 });
+
+    console.log("✅ Tamat proses create-bill, bil berjaya:", billCode);
 
     res.status(200).json(bill);
 
