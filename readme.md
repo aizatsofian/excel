@@ -9,3 +9,4 @@ https://gemini.google.com/u/0/gem/416f72fcd25c/816f9186865afe94 - gems
 `lain`
 
 # cara
+apa
