@@ -85,3 +85,16 @@ export default async function handler(req, res) {
         res.status(500).json({ error: 'Ralat pada server.' });
     }
 }
+
+export default async function handler(req, res) {
+  try {
+    console.log("Start create-bill");
+
+    // ... kod anda
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error("ERROR in create-bill:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
