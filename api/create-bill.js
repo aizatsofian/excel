@@ -59,6 +59,13 @@ module.exports = async function handler(req, res) {
       billPhone: mobile.replace(/\D/g, '').substring(0, 12) || '0111111111'
     };
 
+console.log("====== DEBUG ToyyibPay Payload ======");
+console.log("userSecretKey:", process.env.TOYYIBPAY_SECRET_KEY);
+console.log("categoryCode:", process.env.TOYYIBPAY_CATEGORY_CODE);
+console.log("billData:", billData);
+console.log("======================================");
+
+
     // Log debug ke Vercel
     console.log("🧾 BillData ToyyibPay:", billData);
 
